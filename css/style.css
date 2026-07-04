@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&display=swap');
+
+/* || RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* || ANIMATIONS */
+
+@keyframes fadeAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fading {
+    animation-name: fadeAnimation;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.nobr {
+    white-space: nowrap;
+}
+
+/* || VARIABLES */
+:root {
+    /* FONT */
+    --TITLE-FF: "Asimovian", sans-serif;
+    --CARD-FF: "Geist Pixel", sans-serif;
+    --FS-S: 0.8rem;
+    --FS-M: 1rem;
+    --FS-L: 1.5rem;
+
+    /* COLOR */
+    --BGCOLOR: #000000;
+
+    /* CARD */
+    --SQUARE-COLOR: #fde500;
+    --WHITE-COLOR: #f2f2f2;
+    --CARD-PADDING: 0rem 0.5rem 2rem 0.5rem;
+    --CARD-SHADOW: 10px 10px 0px var(--WHITE-COLOR);
+
+    /* GENERAL */
+    --PADDING: 0.8rem;
+}
+
+/* || GENERAL STYLE */
+body {
+    background-color: var(--BGCOLOR);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: var(--CARD-FF);
+}
+
+main {
+    flex: 1;
+}
+
+.card .title {
+    padding-top: 5px;
+    align-self: flex-start;
+
+    font-size: var(--FS-S);
+    font-family: var(--TITLE-FF);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+
+    width: 75%;
+    min-width: 280px;
+    max-width: 450px;
+
+    margin: 2rem auto 2rem auto;
+
+    background-color: var(--SQUARE-COLOR);
+
+    padding: var(--CARD-PADDING);
+    box-shadow: var(--CARD-SHADOW);
+}
+
+.search {
+    display: flex;
+    gap: 30px;
+}
+
+.search input[type="text"] {
+    text-align: center;
+
+    padding: 10px;
+    border: 0;
+
+    background-color: var(--WHITE-COLOR);
+    font-family: var(--CARD-FF);
+}
+
+.search button {
+    width: 40px;
+    height: auto;
+
+    background-color: var(--WHITE-COLOR);
+    padding: 8px;
+    border: 0;
+}
+
+.weather_window {
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 75%;
+    min-width: 260px;
+    max-width: 320px;
+
+    margin: 3rem auto 4rem auto;
+    padding: 0rem 1rem 2rem 1rem;
+
+    background-color: var(--WHITE-COLOR);
+    background-image: radial-gradient(#d2d3df 1px, var(--WHITE-COLOR) 1px);
+    background-size: 10px 10px;
+    box-shadow: 10px 10px 0px var(--SQUARE-COLOR);
+}
+
+.weather_window .title {
+    align-self: flex-start;
+
+    padding: 5px 0;
+
+    color: #3232e9;
+    font-size: var(--FS-S);
+    font-family: var(--TITLE-FF);
+}
+
+.image_stack {
+    position: relative;
+    width: 100%;
+    max-width: 351px;
+    aspect-ratio: 1/1;
+    min-width: 263px;
+    box-shadow: 5px 5px #000;
+    overflow: hidden;
+}
+
+.image_stack img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image_stack #image {
+    z-index: 1;
+}
+
+.image_stack #overlay {
+    z-index: 2;
+}
+
+.weather_window section {
+    align-self: flex-start;
+
+    padding: 2rem 0 0 0;
+
+    color: #3232e9;
+    font-size: var(--FS-L);
+    font-family: var(--CARD-FF);
+    line-height: 3rem;
+}
+
+footer {
+    position: sticky;
+    bottom: 0px;
+    background-color: var(--WHITE-COLOR);
+
+    padding: var(--PADDING);
+
+    font-size: var(--FS-M);
+    text-align: center;
+}
+
+a:link,
+a:visited {
+    color: #936605;
+}
+
+a:hover {
+    color: #513b0c;
+}
+
+a:active {
+    color: #b98310;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Weather</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <span class="title">
+                ✧ WEATHER_APP
+            </span>
+            <div class="search">
+                <input type="text" placeholder="Enter City Name" spellcheck="false">
+                <button type="submit" width="55" height="55"><img src="images/search.png" alt="Search"></button>
+            </div>
+        </div>
+
+        <div class="weather_window">
+            <span class="title fading">⬤ &ensp;LIVE FOOTAGE FROM: <span class="title" id="city">ERR</span></span>
+            <div class="image_stack">
+                <img id="image" src="images/placeholder.png" alt="City" width="351" height="351">
+                <img id="overlay" width="351" height="351">
+            </div>
+            <section>
+                <div>Temperature: <span class="bold" id="temperature">ERR</span> °C</div>
+                <div>Humidity: <span class="bold" id="humidity">ERR</span>%</div>
+                <div>Wind Speed: <span class="bold" id="wind_speed">ERR</span><span class="nobr"> km/h</span></div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span class="nobr">Cyberpunk Weather</span> | <span class="nobr">All Rights Reserved</span> | Images via <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
+        <p><a href="https://github.com/Trunixx" target="_blank">my GitHub</a></p>
+        <p></p>
+    </footer>
+</body>
+
+</html>
