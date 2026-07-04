@@ -1,4 +1,4 @@
-# Weather App
+# Cyberpunk Weather App
 Simple weather app project made to practice HTML, CSS and JS.
 
 It has a Cyberpunk aesthetic, hence the name of the project.
