@@ -6,10 +6,10 @@ It has a Cyberpunk aesthetic, hence the name of the project.
 The image and the values have tooltips that show other information about the description of the weather, perceived temperature, pressure and visibility.
 
 ## Live Demo
-You can test the API at this link:
+You can test the web app at this link:
 **[Cyberpunk Weather App](https://cyberpunk-weather-app.onrender.com)**
 
-*(The API is hosted on a free Render instance, so the first request might take up to 50 seconds to wake the server up.)*
+*(The web service is hosted on a free Render instance, so the first request might take up to 50 seconds to wake the server up.)*
 
 <div align="center">
   <a href="https://cyberpunk-weather-app.onrender.com">
