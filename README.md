@@ -12,7 +12,7 @@ You can test the API at this link:
 *(The API is hosted on a free Render instance, so the first request might take up to 50 seconds to wake the server up.)*
 
 <div align="center">
-  <a href="https://user-manager-k711.onrender.com/usermanager/swagger-ui/index.html#/">
+  <a href="https://cyberpunk-weather-app.onrender.com">
     <img width="734" height="905" alt="Weather App Demo" src="https://github.com/user-attachments/assets/7a93a7a7-5b5c-4cf0-9b8a-2cb379ab08c9" />
   </a>
 </div>
