@@ -1,12 +1,3 @@
-/* API */
-const apiWeatherKey = process.env.OPENWEATHER_KEY;
-const apiWeatherUrl =
-  "https://api.openweathermap.org/data/2.5/weather?appid=" +
-  apiWeatherKey +
-  "&units=metric";
-
-const apiImageKey = process.env.UNSPLASH_KEY;
-
 /* SEARCH */
 const searchBox = document.querySelector(".search input");
 const searchButton = document.querySelector(".search button");
@@ -21,13 +12,14 @@ const image = document.getElementById("image");
 const overlay = document.getElementById("overlay");
 
 /* LISTENER */
-searchButton.addEventListener("click", () => {
+searchButton.addEventListener("click", async () => {
   const cityName = searchBox.value.trim();
 
   if (!cityName) return;
+
   try {
-    checkWeather(cityName);
-    getCityImage(cityName);
+    const weatherData = await checkWeather(cityName);
+    await getCityImage(cityName, weatherData.weather[0].description);
   } catch (error) {
     city.textContent = "ERR";
     temperature.textContent = "ERR";
@@ -50,45 +42,43 @@ searchBox.addEventListener("keydown", (event) => {
 
 /* UTILITY FUNCTIONS */
 async function checkWeather(cityName) {
-  const response = await fetch(
-    apiWeatherUrl + `&q=${encodeURIComponent(cityName)}`,
-  );
+  const response = await fetch(`/api/weather?city=${encodeURIComponent(cityName)}`);
   const weatherData = await response.json();
 
   if (!response.ok || weatherData.cod != 200) {
     throw new Error(weatherData.message || "City not found");
   }
 
-  city.innerHTML = weatherData.name;
+  city.textContent = weatherData.name;
 
   overlay.src = `images/${weatherData.weather[0].main.toLowerCase()}.gif`;
-  overlay.title = `${weatherData.weather[0].description}`;
+  overlay.title = weatherData.weather[0].description;
 
-  temperature.innerHTML = weatherData.main.temp.toFixed(1);
+  temperature.textContent = weatherData.main.temp.toFixed(1);
   temperature.title = `Feels like ${weatherData.main.feels_like.toFixed(1)} °C`;
 
-  humidity.innerHTML = weatherData.main.humidity;
+  humidity.textContent = weatherData.main.humidity;
   humidity.title = `Pressure: ${weatherData.main.pressure} hPa`;
 
-  windSpeed.innerHTML = weatherData.wind.speed.toFixed(1);
+  windSpeed.textContent = weatherData.wind.speed.toFixed(1);
   windSpeed.title = `Visibility: ${weatherData.visibility / 1000} km`;
 
   return weatherData;
 }
 
-async function getCityImage(cityName) {
+async function getCityImage(cityName, weatherDescription = "") {
   const response = await fetch(
-    `https://api.unsplash.com/search/photos?query=${encodeURIComponent(cityName + " city while weatherData.weather[0].description")}&per_page=1`,
-    {
-      headers: {
-        Authorization: `Client-ID ${apiImageKey}`,
-      },
-    },
+    `/api/image?city=${encodeURIComponent(cityName)}&description=${encodeURIComponent(weatherDescription)}`
   );
 
   const imageData = await response.json();
-  image.src = imageData.results[0].urls.regular;
-  image.alt = imageData.results[0].alt_description || cityName;
 
-  return imageData.results[0];
+  if (!response.ok || !imageData.imageUrl) {
+    throw new Error(imageData.error || "Image not found");
+  }
+
+  image.src = imageData.imageUrl;
+  image.alt = imageData.alt || cityName;
+
+  return imageData;
 }
